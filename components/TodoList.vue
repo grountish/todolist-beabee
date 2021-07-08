@@ -1,6 +1,6 @@
 <template>
   <div class="w-11/12 mx-auto my-5">
-    <AddTodo @AddTodo="AddTodo" />
+    <!-- <AddTodo @AddTodo="AddTodo" /> -->
     <div class="text-center border">
       <div class="border flex justify-between">
         <div class="border w-28">Date</div>

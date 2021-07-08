@@ -1,7 +1,7 @@
 <template>
   <div class="border flex justify-between">
     <div class="border px-4 w-28">
-      <!-- date now -->
+      {{ new Date(todo.date).toLocaleString('en-EN') }}
     </div>
     <input type="text" v-model="todo.todo" v-if="editMode" class="" />
     <div v-else :class="[todo.check ? 'flex items-center justify-between line-through ' : 'flex items-center justify-between']">
@@ -30,8 +30,15 @@ export default {
       todos: [],
       editMode: false,
     }
-  }
-  //addtodo + deletetodo
+  },
+  methods: {
+    DeleteTodo(todoToDelete) {
+      !todoToDelete.check && this.$emit('DeleteTodo', todoToDelete)
+    },
+    checkTodo(todoToCheck) {
+      this.$emit('CheckTodo', todoToCheck)
+    },
+  },
 }
 </script>
 
