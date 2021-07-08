@@ -1,5 +1,5 @@
 <template>
-  <Tutorial/>
+  <TodoList/>
 </template>
 
 <script>
