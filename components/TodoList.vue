@@ -11,9 +11,8 @@
         <Todo :todo="todo" @DeleteTodo="DeleteTodo" @CheckTodo="CheckTodo" />
       </div>
     </div>
-/******************************
- * summary here               *
- ******************************/
+    <Summary :todos="todos" />
+   
   </div>
 </template>
 
