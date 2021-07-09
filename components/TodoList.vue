@@ -7,12 +7,16 @@
         <div class="">Description</div>
         <div class="border w-28">Actions</div>
       </div>
-      <div v-for="todo in todos" :key="todo.id">
-        <Todo :todo="todo" @DeleteTodo="DeleteTodo" @CheckTodo="CheckTodo" />
+      <div v-for="todo in categories[category]" :key="todo.id">
+        <Todo :todo="todo" :category="category" @DeleteTodo="DeleteTodo" @CheckTodo="CheckTodo" />
       </div>
     </div>
-    <Summary :todos="todos" />
-   
+    <Summary :todos="categories[category]" />
+     <select name="categories" id="categories" v-model="category">
+      <option value="Work">Work</option>
+      <option value="Holiday">Holiday</option>
+      <option value="Wishlist">Wishlist</option>
+    </select>
   </div>
 </template>
 
@@ -20,27 +24,35 @@
 export default {
   data() {
     return {
-      todos: [],
+      todos:[],
+      category:'Work',
+      categories: {
+         Work:  [] ,
+         Holiday:  [] ,
+         Wishlist:  [] ,
+      },
     }
   },
   methods: {
-    AddTodo(todo) {
-      this.todos.push(todo)
+    AddTodo(todo,category) {
+     
+       this.categories[category].push(todo);
     },
-    DeleteTodo(todoToDelete) {
-      let tods = this.todos.filter((todo) => todo.id != todoToDelete.id)
+    DeleteTodo(todoToDelete,category) {
+      console.log(todoToDelete,category);
+      let tods = this.categories[category].filter((todo) => todo.id != todoToDelete.id);
 
-      this.todos = tods
+      this.categories[category] = tods;
     },
-    CheckTodo(todoToCheck) {
-      this.todos.forEach((todo) => {
+    CheckTodo(todoToCheck,category) {
+      this.categories[category].forEach((todo) => {
         if (todo.id == todoToCheck.id) {
-          todo.check = todoToCheck.check
+          todo.check = todoToCheck.check;
         }
-      })
-    }
+      });
+    },
   }
-}
+};
 </script>
 
 <style>

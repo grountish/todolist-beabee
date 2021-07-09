@@ -16,14 +16,14 @@
         v-model="todo.check"
       />
       <div class="p-1 cursor-pointer" @click="editMode = !editMode">📝</div>
-      <div class="p-1 cursor-pointer" @click="DeleteTodo(todo)">🗑</div>
+      <div class="p-1 cursor-pointer" @click="DeleteTodo(todo,category)">🗑</div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['todo'],
+  props: ['todo','category'],
 
   data() {
     return {
@@ -33,10 +33,10 @@ export default {
   },
   methods: {
     DeleteTodo(todoToDelete) {
-      !todoToDelete.check && this.$emit('DeleteTodo', todoToDelete)
+      !todoToDelete.check && this.$emit('DeleteTodo', todoToDelete,this.category)
     },
     checkTodo(todoToCheck) {
-      this.$emit('CheckTodo', todoToCheck)
+      this.$emit('CheckTodo', todoToCheck,this.category)
     },
   },
 }
