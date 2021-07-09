@@ -1,7 +1,10 @@
 <template>
   <div class="border flex justify-between">
     <div class="border px-4 w-28">
-      {{ new Date(todo.date).toLocaleString('en-EN') }}
+      {{ new Date(todo.date).toLocaleString('en-EN',{
+   
+     hour: "2-digit", minute: "2-digit",day: "numeric",month:"numeric"
+}) }}
     </div>
     <input type="text" v-model="todo.todo" v-if="editMode" class="" />
     <div v-else :class="[todo.check ? 'flex items-center justify-between line-through ' : 'flex items-center justify-between']">
