@@ -4,7 +4,7 @@
       {{ new Date(todo.date).toLocaleString('en-EN',{
    
      hour: "2-digit", minute: "2-digit",day: "numeric",month:"numeric"
-}) }}
+}) | fixDate}}
     </div>
     <input type="text" v-model="todo.todo" v-if="editMode" class="" />
     <div v-else :class="[todo.check ? 'flex items-center justify-between line-through ' : 'flex items-center justify-between']">
@@ -41,7 +41,11 @@ export default {
     checkTodo(todoToCheck) {
       this.$emit('CheckTodo', todoToCheck,this.category)
     },
-  },
+  },filters:{
+    fixDate(date){
+      return date.split(',').reverse().toString().replace(/[[}]],%^&*]/g, "")
+    }
+  }
 }
 </script>
 
