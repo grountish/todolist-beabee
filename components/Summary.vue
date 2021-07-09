@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="my-3">
   
     Summary: {{ returnOutstanding}} Outstanding, {{ returnCompleted}} Completed
   

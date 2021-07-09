@@ -1,7 +1,7 @@
 <template>
-  <div class="w-11/12 flex align-center">
+  <div class="w-full flex items-center">
     <input class="border w-full h-6" v-model="todo" type="text" name="" id="" />
-    <select name="categories" id="categories" v-model="category">
+    <select class="px-3 mx-4" name="categories" id="categories" v-model="category">
       <option value="Work">Work</option>
       <option value="Holiday">Holiday</option>
       <option value="Wishlist">Wishlist</option>
